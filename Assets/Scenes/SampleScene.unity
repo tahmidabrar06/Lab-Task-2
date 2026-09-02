@@ -893,6 +893,7 @@ MonoBehaviour:
   gravityStrength: -9.8
   verticalAcc: 0
   jumpStrength: 5
+  extraJumps: 1
   groundDistance: 0.55
   groundMask:
     serializedVersion: 2

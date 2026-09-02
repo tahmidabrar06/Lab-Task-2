@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     private float verticalAcc;
     [SerializeField]
     private float jumpStrength;
+    [SerializeField]
+    private int extraJumps;
+    private int jumpCount = 0;
 
     private Transform groundCheck;
     [SerializeField] 
@@ -63,24 +66,22 @@ public class Player : MonoBehaviour
     }
     void Jump()
     {
-        if (jumpAction.WasPressedThisFrame() && IsGrounded())
+        if (jumpAction.WasPressedThisFrame())
         {
-            //Debug.Log("jumped");
-            verticalAcc = jumpStrength;
-        }        
+            if(jumpCount<extraJumps)
+            {
+                //Debug.Log("jumped");
+                verticalAcc = jumpStrength;
+                jumpCount += 1; //first jump doesnt count for some reason?
+            }
+        }
+        if(IsGrounded())
+        {
+            jumpCount = 0;
+        }
     }
     bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
     }
-    void OnDrawGizmosSelected()
-{
-    if (groundCheck == null)
-        return;
-
-    Gizmos.DrawWireSphere(
-        groundCheck.position,
-        groundDistance
-    );
-}
 }
