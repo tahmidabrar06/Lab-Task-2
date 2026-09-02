@@ -8,18 +8,28 @@ public class Player : MonoBehaviour
     private InputAction jumpAction;
     private InputAction attackAction;
     private CharacterController cc;
-    private bool isJumping = false;
-    public float speed;
-    public float gravityStrength;
+    [SerializeField] 
+    private float speed;
+    [SerializeField] 
+    private float gravityStrength;
     [SerializeField]
-    private float acceleration;
-    public float jumpStrength;
+    private float verticalAcc;
+    [SerializeField]
+    private float jumpStrength;
+
+    private Transform groundCheck;
+    [SerializeField] 
+    float groundDistance = 0.6f;
+    [SerializeField] 
+    LayerMask groundMask;
+    private bool gravReset;
     void Start()
     {        
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
         attackAction = InputSystem.actions.FindAction("Attack");
         cc = gameObject.GetComponent<CharacterController>();
+        groundCheck = GameObject.Find("GroundChecker").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -32,15 +42,17 @@ public class Player : MonoBehaviour
 
     void Gravity()
     {
-        if(acceleration > gravityStrength)
+        if(!IsGrounded())
         {
-            acceleration += gravityStrength * Time.deltaTime;
+            gravReset = false;
+            verticalAcc += gravityStrength * Time.deltaTime;
         }
-        else if(cc.isGrounded)
+        else if(IsGrounded() && !gravReset)
         {
-            acceleration = gravityStrength;
+            verticalAcc = 0;
+            gravReset = true;
         }
-        cc.Move(Vector3.up * acceleration * Time.deltaTime);
+        cc.Move(Vector3.up * verticalAcc * Time.deltaTime);
     }
 
     void Movement()
@@ -51,16 +63,24 @@ public class Player : MonoBehaviour
     }
     void Jump()
     {
-        if (jumpAction.WasPressedThisFrame() && isJumping == false)
+        if (jumpAction.WasPressedThisFrame() && IsGrounded())
         {
-            Debug.Log("jumped");
-            isJumping = true;
-            acceleration = jumpStrength;
-        }
-        if (cc.isGrounded)
-        {
-            isJumping = false;
-        }
-        
+            //Debug.Log("jumped");
+            verticalAcc = jumpStrength;
+        }        
     }
+    bool IsGrounded()
+    {
+        return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    }
+    void OnDrawGizmosSelected()
+{
+    if (groundCheck == null)
+        return;
+
+    Gizmos.DrawWireSphere(
+        groundCheck.position,
+        groundDistance
+    );
+}
 }
