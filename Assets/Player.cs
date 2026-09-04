@@ -1,6 +1,8 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
@@ -26,6 +28,9 @@ public class Player : MonoBehaviour
     [SerializeField] 
     LayerMask groundMask;
     private bool gravReset;
+
+    [SerializeField]
+    private Weapon equippedWeapon;
     void Start()
     {        
         moveAction = InputSystem.actions.FindAction("Move");
@@ -41,6 +46,7 @@ public class Player : MonoBehaviour
         Gravity();
         Movement();
         Jump();
+        Attack();
     }
 
     void Gravity()
@@ -80,6 +86,15 @@ public class Player : MonoBehaviour
             jumpCount = 0;
         }
     }
+
+    void Attack()
+    {
+        if (equippedWeapon == null)
+            return;
+
+        equippedWeapon.HandleWeaponInput(attackAction.WasPressedThisFrame(), attackAction.IsPressed());
+    }
+
     bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
