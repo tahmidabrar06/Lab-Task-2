@@ -11,15 +11,15 @@ public class Player : MonoBehaviour
     private InputAction attackAction;
     private CharacterController cc;
     [SerializeField] 
-    private float speed;
+    private float speed = 5;
     [SerializeField] 
-    private float gravityStrength;
+    private float gravityStrength = -9.8f;
     [SerializeField]
     private float verticalAcc;
     [SerializeField]
-    private float jumpStrength;
+    private float jumpStrength = 5;
     [SerializeField]
-    private int extraJumps;
+    private int extraJumps = 1;
     private int jumpCount = 0;
 
     private Transform groundCheck;
