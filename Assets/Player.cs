@@ -99,4 +99,14 @@ public class Player : MonoBehaviour
     {
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
     }
+
+    public void setWeapon(GameObject weapon)
+    {
+        if(equippedWeapon != null)
+        {
+            equippedWeapon.gameObject.SetActive(false);
+        }
+        weapon.SetActive(true);
+        equippedWeapon = weapon.GetComponent<Weapon>();
+    }
 }
