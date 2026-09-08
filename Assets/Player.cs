@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
         if (equippedWeapon == null)
             return;
 
-        equippedWeapon.HandleWeaponInput(attackAction.WasPressedThisFrame(), attackAction.IsPressed());
+        equippedWeapon.HandleWeaponInput(attackAction.WasPressedThisFrame(), attackAction.IsPressed(), attackAction.WasReleasedThisFrame());
     }
 
     bool IsGrounded()
@@ -104,9 +104,14 @@ public class Player : MonoBehaviour
     {
         if(equippedWeapon != null)
         {
-            equippedWeapon.gameObject.SetActive(false);
+            unequipWeapon();
         }
         weapon.SetActive(true);
         equippedWeapon = weapon.GetComponent<Weapon>();
+    }
+    public void unequipWeapon()
+    {
+        equippedWeapon.gameObject.SetActive(false);
+        equippedWeapon = null;
     }
 }

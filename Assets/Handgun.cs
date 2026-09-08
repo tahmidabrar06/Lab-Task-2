@@ -4,10 +4,7 @@ public class Handgun : Weapon
 {
     [SerializeField] private float range = 100f;
     [SerializeField] private float impactForce = 0.5f;
-    public override void HandleWeaponInput(
-        bool pressedThisFrame,
-        bool isHeld
-    )
+    public override void HandleWeaponInput(bool pressedThisFrame, bool isHeld, bool releasedThisFrame)
     {
         if (pressedThisFrame)
         {

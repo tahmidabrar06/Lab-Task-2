@@ -14,7 +14,7 @@ public class GattlingGun : Weapon
     {
         barrel = GameObject.Find("Barrel");
     }
-    public override void HandleWeaponInput(bool pressedThisFrame,bool isHeld)
+    public override void HandleWeaponInput(bool pressedThisFrame, bool isHeld, bool releasedThisFrame)
     {
         if (isHeld)
         {
