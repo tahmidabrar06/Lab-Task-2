@@ -4,7 +4,7 @@ using UnityEngine;
 public class GrenadeProjectile : MonoBehaviour
 {
     [SerializeField]
-    private LayerMask explositonLayer;
+    private LayerMask explosionLayer;
     [SerializeField]
     private float explosionRadius = 7;
     [SerializeField]
@@ -18,11 +18,11 @@ public class GrenadeProjectile : MonoBehaviour
 
     void Explode()
     {
-        Collider[] collidersInRange = Physics.OverlapSphere(gameObject.transform.position, explosionRadius, explositonLayer);
+        Collider[] collidersInRange = Physics.OverlapSphere(gameObject.transform.position, explosionRadius, explosionLayer);
         
         foreach(Collider collider in collidersInRange)
         {
-            collider.attachedRigidbody.AddExplosionForce(explosionPower, transform.position, explosionRadius, 1, ForceMode.Force);
+            collider.attachedRigidbody.AddExplosionForce(explosionPower, transform.position, explosionRadius, 1, ForceMode.Impulse);
         }
         Destroy(gameObject);
     }
