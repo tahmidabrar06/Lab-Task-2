@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4074489674997011875}
   - component: {fileID: 3697874922124677558}
   - component: {fileID: 2778495053684291448}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 590107305155927865}
   - component: {fileID: 8597309197577903855}
   - component: {fileID: 2464721760708785993}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 14442507130587563}
   - component: {fileID: -1097631497310142676}
   - component: {fileID: -8669031243480226226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GrenadePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,6 +299,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad60d57c4dc2ba74a935ac4d3cec7714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  explositonLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  explosionRadius: 7
+  explosionPower: 200
 --- !u!1 &8090446059516400146
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +315,7 @@ GameObject:
   - component: {fileID: 8845572650777308123}
   - component: {fileID: 917726166574470929}
   - component: {fileID: 8916702841321976418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
