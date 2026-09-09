@@ -8,7 +8,7 @@ public class GrenadeProjectile : MonoBehaviour
     [SerializeField]
     private float explosionRadius = 7;
     [SerializeField]
-    private float explosionPower = 200;
+    private float explosionPower = 2;
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Grenade hit: " + collision.collider.name);

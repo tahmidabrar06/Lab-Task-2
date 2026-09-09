@@ -302,8 +302,8 @@ MonoBehaviour:
   explosionLayer:
     serializedVersion: 2
     m_Bits: 64
-  explosionRadius: 7
-  explosionPower: 10
+  explosionRadius: 10
+  explosionPower: 2
 --- !u!1 &8090446059516400146
 GameObject:
   m_ObjectHideFlags: 0
