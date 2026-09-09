@@ -3,7 +3,7 @@ using UnityEngine;
 public class Handgun : Weapon
 {
     [SerializeField] private float range = 100f;
-    [SerializeField] private float impactForce = 0.5f;
+    [SerializeField] private float impactForce = 5;
     public override void HandleWeaponInput(bool pressedThisFrame, bool isHeld, bool releasedThisFrame)
     {
         if (pressedThisFrame)

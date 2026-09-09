@@ -7,7 +7,7 @@ public class WeaponSpawner : MonoBehaviour
     [SerializeField]
     private GameObject weapon, weaponModel;
     [SerializeField]
-    private float respawnTime;
+    private float respawnTime = 5;
     private float respawnTimer;
     private bool timerStart = false;
     

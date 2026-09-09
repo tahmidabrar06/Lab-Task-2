@@ -4,9 +4,9 @@ public class GattlingGun : Weapon
 {
     private GameObject barrel;
     [SerializeField] private float range = 100f;
-    [SerializeField] private float impactForce = 0.5f;
-    [SerializeField] private float fireRate = 0.2f;
-    [SerializeField] private float accuracy = 0f;
+    [SerializeField] private float impactForce = 7;
+    [SerializeField] private float fireRate = 0.1f;
+    [SerializeField] private float accuracy = 0.05f;
 
     private float timer = 0f;
 

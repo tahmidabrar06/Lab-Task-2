@@ -6,7 +6,7 @@ public class Grenade : Weapon
     [SerializeField]
     private GameObject grenadePrefab;
     [SerializeField]
-    private float maxThrowPower;
+    private float maxThrowPower = 2;
     [SerializeField]
     private float throwPower;
 

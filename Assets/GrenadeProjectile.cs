@@ -6,9 +6,9 @@ public class GrenadeProjectile : MonoBehaviour
     [SerializeField]
     private LayerMask explositonLayer;
     [SerializeField]
-    private float explosionRadius;
+    private float explosionRadius = 7;
     [SerializeField]
-    private float explosionPower;
+    private float explosionPower = 200;
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Grenade hit: " + collision.collider.name);
